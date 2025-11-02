@@ -6985,7 +6985,7 @@
                                     <div style="width: 100%;">
                                         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
                                             <div style="display: flex; align-items: center;">
-                                                <span style="font-weight: normal; font-size: 0.9em; color: var(--secondary-text);">Translation ID:</span>
+                                                <span style="font-weight: normal; font-size: 0.9em; color: var(--secondary-text);">Original ID:</span> 
                                                 <span dir="ltr" style="font-family: monospace; margin-left: 8px; color: var(--primary-color); font-weight: 600;">${originalId}</span>
                                             </div>
                                             ${sourceId ? `
@@ -6996,16 +6996,15 @@
                                             ` : ''}
                                             ${currentMappedId ? `
                                             <div style="display: flex; align-items: center;">
-                                                <span style="font-weight: normal; font-size: 0.9em; color: var(--secondary-text);">Mapped ID:</span>
+                                                <span style="font-weight: normal; font-size: 0.9em; color: var(--secondary-text);">Translation ID:</span> 
                                                 <span dir="ltr" style="font-family: monospace; margin-left: 8px;">${currentMappedId}</span>
                                             </div>
                                             ` : ''}
                                         </div>
-                                        <!-- CRITICAL FIX: Always show both IDs for better tracking -->
                                         <div style="display: flex; gap: 20px; margin-top: 8px; font-size: 0.8em; color: var(--secondary-text);">
-                                            <span><strong>Translation:</strong> ${originalId}</span>
+                                            <span><strong>Original ID:</strong> ${originalId}</span>
                                             ${sourceId ? `<span><strong>Source:</strong> ${sourceId}</span>` : ''}
-                                            ${currentMappedId ? `<span><strong>Mapped:</strong> ${currentMappedId}</span>` : ''}
+                                            ${currentMappedId ? `<span><strong>Translation ID:</strong> ${currentMappedId}</span>` : ''}
                                         </div>
                                         <div class="file-progress-bar">
                                             <div class="file-progress-fill" id="file-progress-fill-${fileIndex}" style="width: 0%"></div>
