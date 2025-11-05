@@ -4507,6 +4507,7 @@
                     // لكن بما أننا نعالج math-field أولاً، سنحتاج إلى حمايتها
 
                     // (تم نقل منطق الوحدات والفواصل إلى `processMathFieldContent` و `convertSymbolsToArabic` لضمان تطبيقها داخل المعادلات فقط)
+                    out = this.fixStandaloneEnglishDigits(out, ctx);
 
                     // يمكنك إضافة قواعد أخرى هنا ليتم تطبيقها على النص العادي *خارج* وسوم math-field
                     // out = this.enforceUnits(out, ctx); // (تم دمج هذا المنطق)
