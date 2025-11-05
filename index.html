@@ -3055,6 +3055,33 @@
                     
                     return false;
                 },
+
+                fixStandaloneEnglishDigits(htmlString, ctx = { subject: 'None', grade: 'None' }) {
+                    if (!htmlString || typeof htmlString !== 'string') return htmlString;
+                
+                    // Check if conversion is required for this subject/grade
+                    const shouldConvert = this.wantsArabicIndicDigits(ctx.subject, ctx.grade);
+                    if (!shouldConvert) return htmlString;
+                    
+                    // 1. Temporarily protect MathLive fields
+                    const protectedMath = [];
+                    let processed = htmlString.replace(/<math-field[\s\S]*?<\/math-field>/gi, (match) => {
+                        const placeholder = `__TMP_MATH_${protectedMath.length}__`;
+                        protectedMath.push(match);
+                        return placeholder;
+                    });
+                
+                    // 2. Convert digits in the remaining text
+                    processed = processed.replace(/[0-9]/g, ch => '٠١٢٣٤٥٦٧٨٩'[+ch]);
+                
+                    // 3. Restore MathLive fields
+                    protectedMath.forEach((match, index) => {
+                        const placeholder = `__TMP_MATH_${index}__`;
+                        processed = processed.replace(placeholder, match);
+                    });
+                
+                    return processed;
+                },
                 
                 shouldConvertDigitsToArabic(subject, grade) {
                     // Use the same logic as wantsArabicIndicDigits
